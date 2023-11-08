@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Минцифры</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+
+  <a href="https://digital.gov.ru/ru/"><img src="https://u.9111s.ru/uploads/202204/06/d174014e3220a147fea2d794864250fe.png" class="img-fluid" width="900" style="padding: 30px;" alt="Логотип Минцифры Росии"></a>
+  <h1 class="big-title">
+    <span>М</span><span>и</span><span>н</span><span>и</span><span>с</span><span>т</span><span>е</span><span>р</span><span>с</span><span>т</span><span>в</span><span>о</span>
+  <span>ц</span><span>и</span><span>ф</span><span>р</span><span>о</span><span>в</span><span>о</span><span>й</span>
+  <span>к</span><span>у</span><span>л</span><span>ь</span><span>т</span><span>у</span><span>р</span><span>ы</span>
+  <span>Р</span><span>о</span><span>с</span><span>с</span><span>и</span><span>и</span>
+  </h1>
+  
+  <div class="news-image" style="background-image: url('https://u.9111s.ru/uploads/202112/24/2fdc41e4f1c013826d43129107a1f6a4.jpg');" onclick="window.location='https://digital.gov.ru/ru/';"></div>
+  
+  <h2 class="news-title">Новости IT</h2>
+  <!-- Маркированный список -->
+  <ul class="markers">
+    <li><a href="https://digital.gov.ru/ru/">РБК Tech2023</a></li>
+    <li><a href="https://digital.gov.ru/ru/">Кибердом</a></li>
+    <li><a href="https://digital.gov.ru/ru/">Сотрудничество с Китаем</a></li>
+  </ul>
+  
+  <h2 class="news-title">Интересные статьи</h2>
+   <!-- Нумерованный список -->
+  <ol>
+    <li><a href="https://digital.gov.ru/ru/">Дмитрий Чернышенко посетил стенд Минцифры на выставке «Россия»</a></li>
+    <li><a href="https://digital.gov.ru/ru/">На Госуслугах можно проверить подлинность паспорта</a></li>
+    <li><a href="https://digital.gov.ru/ru/">Татарстан — самый читающий регион России в 2023 году</a></li>
+  </ol>
+
+  <h2 class="news-title" style="text-align: center;">Ваши вопросы нам</h2>
+  <section class="contact-form-section">
+      <!-- Форма отправки -->
+      <form id="contactForm">
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Почта для связи:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="question">Ваш вопрос:</label>
+            <textarea id="question" name="question" required></textarea>
+        </div>
+        <button type="submit">Отправить</button>
+    </form>
+  </section>
+
+  <!-- Калькулятор, особая функция - гиперболический косинус -->
+  <h2 class="news-title" style="text-align: center;">Калькулятор</h2>
+  <div class="calculator">
+      <input type="number" id="number1" placeholder="Введите первое число">
+      <input type="number" id="number2" placeholder="Введите второе число">
+      <div class="operations">
+        <button onclick="calculate('add')">Сложение</button>
+        <button onclick="calculate('subtract')">Вычитание</button>
+        <button onclick="calculate('multiply')">Умножение</button>
+        <button onclick="calculate('divide')">Деление</button>
+        <button onclick="calculate('power')">Возведение в степень</button>
+        <button onclick="calculate('sqrt')">Квадратный корень</button>
+        <button onclick="calculate('cosh')">Гиперболический косинус</button>
+      </div>
+      <div class="result" id="result"></div>
+      </div><br>
+
+      <!-- Бегущие в строке буквы, регистр меняется -->
+<h2 class="news-title" style="text-align: center;">Бегущие буквы</h2>
+<div class="calculator">
+  <div class="col-3">
+  <input class="form-control form-control-lg text-center" type="text" id="inputField" placeholder="Введите текст, и в нем будет меняться регистр">
+  <p id="output"></p>
+  <button class="btn btn-secondary" onclick="startAnimation()">Начать анимацию</button>
+    <script>
+      const inputField = document.getElementById('inputField');
+  const output = document.getElementById('output');
+  let interval;
+  let currentIndex = 0;
+
+  function startAnimation() {
+      if (interval) {
+          clearInterval(interval);
+          currentIndex = 0;
+      }
+
+      interval = setInterval(() => {
+          output.innerHTML = convertToHighlightedText(inputField.value, currentIndex);
+          currentIndex++;
+
+          if (currentIndex > inputField.value.length) {
+              currentIndex = 0;
+          }
+      }, 100); 
+  }
+
+  function convertToHighlightedText(text, index) {
+      let before = text.slice(0, index);
+      let highlighted = text.charAt(index).toUpperCase();
+      let after = text.slice(index + 1);
+
+      return before + highlighted + after;
+  }
+    </script>
+  </div>
+</div><br>
+
+<!-- Секретные окна -->
+
+<h2 class="news-title" style="text-align: center;">Секретные окна</h2>
+<div class="calculator">
+  <div class="row">
+      <button type="button" id="object1" class="btn btn-danger clickable col-2">Жми</button>
+      <button type="button" id="object2" class="btn btn-light clickable col-2">Жми</button>
+      <button type="button" id="object3" class="btn btn-primary clickable col-2">Жми</button>
+  </div>    
+
+  <script>
+    let clickOrder = [];
+    // Последовательность нажатия
+const secretOrder = ["object1", "object2", "object3"];
+const clickableElements = document.querySelectorAll('.clickable');
+
+clickableElements.forEach(element => {
+    element.addEventListener('click', (e) => {
+        clickOrder.push(e.target.id);
+        if (clickOrder.length === 3) {
+            if (JSON.stringify(clickOrder) === JSON.stringify(secretOrder)) {
+              // Видео, на которое кидает при нажатии кнопок в определенном порядке
+                window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=0s&ab_channel=RickAstley";
+            } else {
+                clickOrder = [];
+            }
+        }
+    });
+});
+
+let typedPhrase = "";
+// Задаем фразу, которая набирается на калькуляторе
+const secretPhrase = "дора";
+
+document.addEventListener('keydown', (e) => {
+    typedPhrase += e.key;
+    if (typedPhrase.length > secretPhrase.length) {
+        typedPhrase = typedPhrase.slice(1);
+    }
+    if (typedPhrase === secretPhrase) {
+      // Видео, на которое перекидывает
+        window.location.href = "https://www.youtube.com/watch?v=WNadEfGnV04&ab_channel=дора";
+    }
+});
+  </script>
+</div><br>
+
+<!-- Шизоидные паззлы -->
+<h2 class="news-title" style="text-align: center;">Мини-игры: Пазлы</h2>
+
+<div>
+
+    <h2>Перетащите пазлы на правильное место</h2>
+
+    <div class="puzzle-container">
+        <div class="puzzle-slot" data-correct="1"></div>
+        <div class="puzzle-slot" data-correct="2"></div>
+        <div class="puzzle-slot" data-correct="3"></div>
+        <div class="puzzle-slot" data-correct="4"></div>
+    </div>
+
+    <div class="puzzle-pieces">
+        <img src="puzzle/image_part_001.png" alt="Часть 1" draggable="true" id="puzzle1" data-piece="1">
+        <img src="puzzle/image_part_002.png" alt="Часть 2" draggable="true" id="puzzle2" data-piece="2">
+        <img src="puzzle/image_part_003.png" alt="Часть 3" draggable="true" id="puzzle3" data-piece="3">
+        <img src="puzzle/image_part_004.png" alt="Часть 4" draggable="true" id="puzzle4" data-piece="4">
+    </div>
+
+    <div id="congratulations" class="hidden">Поздравляем, вы собрали пазл!</div>
+
+   
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    let correctPieces = 0;
+
+    const slots = document.querySelectorAll('.puzzle-slot');
+    const pieces = document.querySelectorAll('.puzzle-pieces img');
+    const congratulations = document.getElementById('congratulations');
+
+    pieces.forEach(piece => {
+        piece.addEventListener('dragstart', dragStart);
+    });
+
+    slots.forEach(slot => {
+        slot.addEventListener('dragover', dragOver);
+        slot.addEventListener('dragenter', dragEnter);
+        slot.addEventListener('dragleave', dragLeave);
+        slot.addEventListener('drop', drop);
+    });
+
+    function dragStart(event) {
+        event.dataTransfer.setData('text/plain', event.target.id);
+    }
+
+    function dragOver(event) {
+        event.preventDefault();
+    }
+
+    function dragEnter(event) {
+        event.preventDefault();
+    }
+
+    function dragLeave(event) {
+        event.target.classList.remove('hovered');
+    }
+
+    function drop(event) {
+        const pieceId = event.dataTransfer.getData('text');
+        const piece = document.getElementById(pieceId);
+        const correctPiece = event.target.getAttribute('data-correct');
+
+        if (pieceId === `puzzle${correctPiece}`) {
+            event.target.appendChild(piece);
+            event.target.style.backgroundImage = `url('${piece.src}')`;
+            correctPieces++;
+            piece.style.display = 'none';
+
+            if (correctPieces === 4) {
+                congratulations.classList.remove('hidden');
+            }
+        }
+
+        event.target.classList.remove('hovered');
+    }
+});
+
+</script>
+
+</div><br>
+
+ <div>
+      <p class="footer"><a href="//digital.gov.ru/ru/!">Сайт создан при поддержке Министерства цифровой культуры Российской Федерации</a></p>
+    </div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
